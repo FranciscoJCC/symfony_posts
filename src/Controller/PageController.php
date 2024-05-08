@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PageController extends AbstractController
 {
-    #[Route('/contact-v1', methods:['GET', 'POST' ])]
+    #[Route('/contact-v1', name: 'contact-v1', methods:['GET', 'POST' ])]
     public function contactV1(Request $request): Response
     {
         $form = $this->createFormBuilder()
@@ -33,7 +33,9 @@ class PageController extends AbstractController
         $form->handleRequest($request);
         if( $form->isSubmitted()){
             //getData() tiene todos los valores que se han enviado
-            dd($form->getData(), $request);
+            //dd($form->getData(), $request);
+            $this->addFlash('success', 'Prueba form #1 con éxito');
+            return $this->redirectToRoute('contact-v1');
         }
 
         return $this->render('page/contact-v1.html.twig', [
@@ -41,7 +43,7 @@ class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/contact-v2', methods:['GET', 'POST' ])]
+    #[Route('/contact-v2', name: 'contact-v2', methods:['GET', 'POST' ])]
     public function contactV2(Request $request): Response
     {
         //Creación del formulario
@@ -50,7 +52,9 @@ class PageController extends AbstractController
         //Manejo del formulario, cuando es enviado
         $form->handleRequest($request);
         if( $form->isSubmitted()){
-            dd($form->getData(), $request);
+            /* dd($form->getData(), $request); */
+            $this->addFlash('success', 'Prueba form #2 con éxito');
+            return $this->redirectToRoute('contact-v2');
         }
 
         //Retornamos la vista
@@ -59,7 +63,7 @@ class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/contact-v3', methods:['GET', 'POST' ])]
+    #[Route('/contact-v3', name: 'contact-v3', methods:['GET', 'POST' ])]
     public function contactV3(Request $request): Response
     {
         //Creación del formulario
@@ -68,7 +72,9 @@ class PageController extends AbstractController
         //Manejo del formulario, cuando es enviado
         $form->handleRequest($request);
         if( $form->isSubmitted()){
-            dd($form->getData(), $request);
+            /* dd($form->getData(), $request); */
+            $this->addFlash('success', 'Prueba form #3 con éxito');
+            return $this->redirectToRoute('contact-v3');
         }
 
         //Retornamos la vista
