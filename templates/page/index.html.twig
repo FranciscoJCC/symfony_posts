@@ -1,14 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Formulario 3{% endblock %}
+{% block title %}Página principal{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1 class="text-center">Ejemplo Home ❤️</h1>
+<div class="d-flex align-items-center justify-content-between">
+    <h1 class="">Lista de posts ❤️</h1>
+
+    <a href="{{ path('post_create' ) }}" class="btn btn-primary btn-sm">Crear post</a>
+</div>
+
+<div class="table-responsive mt-5 rounded">
+    <table class="table table-dark table-hover table-bordered">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">Título</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>
+                    <a href="{{ path('post_update', { id: post.id }) }}">Editar</a>
+                    <a href="{{ path('post_update', { id: post.id }) }}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
