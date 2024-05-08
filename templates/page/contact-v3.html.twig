@@ -9,9 +9,10 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Formulario v3</h1>
+    <h1 class="text-center">Formulario v3</h1>
 
     {# {{ form(form) }} #}
+    {% form_theme form 'bootstrap_5_horizontal_layout.html.twig' %}
     {{ form_start(form, {
         'action': 'procesar',
         'method': 'GET',
