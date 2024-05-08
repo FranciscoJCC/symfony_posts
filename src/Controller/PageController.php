@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Form\ContactType;
 use App\Entity\Post;
+use App\Entity\Category;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +21,8 @@ class PageController extends AbstractController
     public function index(EntityManagerInterface $entityManager): Response
     {
         return $this->render('page/index.html.twig', [
-            'posts' => $entityManager->getRepository(Post::class)->findAll()
+            'posts' => $entityManager->getRepository(Post::class)->findAll(),
+            'categories' => $entityManager->getRepository(Category::class)->findAll()
         ]);
     }
 

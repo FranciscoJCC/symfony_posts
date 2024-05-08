@@ -23,8 +23,36 @@
             <tr>
                 <td>{{ post.title }}</td>
                 <td>
-                    <a href="{{ path('post_update', { id: post.id }) }}">Editar</a>
-                    <a href="{{ path('post_update', { id: post.id }) }}">Eliminar</a>
+                    <a class="btn btn-secondary btn-sm" href="{{ path('post_update', { id: post.id }) }}">Editar</a>
+                    {# <a href="{{ path('post_update', { id: post.id }) }}">Eliminar</a> #}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="mt-5 d-flex align-items-center justify-content-between">
+    <h1 class="">Lista de categorias ❤️</h1>
+
+    <a href="{{ path('category_create' ) }}" class="btn btn-primary btn-sm">Crear categoria</a>
+</div>
+
+<div class="table-responsive mt-5 rounded">
+    <table class="table table-dark table-hover table-bordered">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">Título</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a class="btn btn-secondary btn-sm" href="{{ path('category_update', { id: category.id }) }}">Editar</a>
+                    {# <a href="{{ path('category_update', { id: category.id }) }}">Eliminar</a> #}
                 </td>
             </tr>
         {% endfor %}
