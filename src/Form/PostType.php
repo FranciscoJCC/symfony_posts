@@ -24,7 +24,8 @@ class PostType extends AbstractType
             ->add('category', EntityType::class,[
                 'class' => Category::class,
                 'placeholder' => 'Selecciona una ... ',
-                'label' => 'Categorias'
+                'label' => 'Categorias',
+                //'required' => false
             ])
             ->add('title', TextType::class, [
                 'label' => 'Titulo de la publicación',
